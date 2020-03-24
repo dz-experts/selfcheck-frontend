@@ -34,7 +34,7 @@ function SurveyInformation({t, stepForward}) {
       <button
         className="button is-primary"
         onClick={(e) => {
-          stepForward()
+          stepForward({})
           e.preventDefault()
         }}
       >

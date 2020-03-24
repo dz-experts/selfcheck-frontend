@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withTranslation } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -14,12 +14,20 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
   
   const current_question = questions[current_step - 1]
 
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors, reset } = useForm();
   const onSubmit = values => {
-    console.log(values);
-    console.log(errors);
-    stepForward()
+    setSubmitIsLoading(true)
+    stepForward({answer: {key: current_question.key, value: values[current_question.key]}})
+      .then(() => {
+        reset() // needed in order for the form to be reset for use in the next question
+        setSubmitIsLoading(false)
+      })
+      .catch(() => {
+        setSubmitIsLoading(false)
+      })
   };
+
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +61,7 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
       </div>
 
       <button
-        className="button is-light"
+        className={`button is-light ${submitIsLoading?'is-loading':''}`}
         type="submit"
       >
         <span>{t('Continuer')}</span>

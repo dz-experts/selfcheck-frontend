@@ -7,8 +7,8 @@ function NumberField({t, question, register, errors}) {
   return (
     <div className="control">
       <input
-        className={`input ${errors[question.id]?'is-danger':''}`}
-        name={question.id}
+        className={`input ${errors[question.key]?'is-danger':''}`}
+        name={question.key}
         type="number"
         step={question.format.decimal?"0.01":"1"}
         ref={register({
@@ -17,7 +17,7 @@ function NumberField({t, question, register, errors}) {
           ...question.format.max!==undefined?{max: question.format.max}:{}
         })}
       />
-      {errors[question.id] && (<p className="help is-danger">{t('Donnée non valide')}.</p>)}      
+      {errors[question.key] && (<p className="help is-danger">{t('Donnée non valide')}.</p>)}      
     </div>
   );
 }

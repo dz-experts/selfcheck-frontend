@@ -23,22 +23,60 @@ class SurveyScreen extends React.Component {
       loading_failed: false,
       current_step: 0,
       questions: [],
-      answers: []
+      answers: [],
+      results: null
     };
   }
 
-  stepForward = () => {
-    this.setState({current_step: this.state.current_step + 1})
+  stepForward = ({answer}) => {
+    if (this.state.current_step > 0 && !answer) {
+      return Promise.reject()
+    }
+
+    // append answer if applicable
+    this.setState(state => ({
+      answers: [...state.answers, ...answer?[answer]:[]]
+    }))
+
+    if (this.state.current_step < this.state.questions.length) {
+      // if we did not reach the end of the survey, yet, simply step forward.
+      this.setState(state => ({
+        current_step: state.current_step + 1,
+      }))
+      return Promise.resolve()
+    } else if (this.state.current_step === this.state.questions.length) {
+      // if we have indeed reached the end of the survey, submit and only step forward on success.
+      return api_questions.post({answers: this.state.answers})
+        .then((response) => {
+          if (response.status === 200) {
+            this.setState(state => ({
+              current_step: state.current_step + 1,
+              results: response.data
+            }))
+            return Promise.resolve()
+          } else {
+            return Promise.reject()
+          }
+        })
+    }
   }
 
   stepBack = () => {
-    this.setState({current_step: this.state.current_step - 1})
+    this.setState(state => {
+      let answers_copy = [...state.answers]
+      answers_copy.splice(answers_copy.length - 1, 1) // remove last answer
+      return {
+        current_step: this.state.current_step - 1,
+        answers: answers_copy
+      }
+    })
   }
 
   reset = () => {
     this.setState({
       current_step: 0,
-      answers: []
+      answers: [],
+      results: null
     })
   }
 

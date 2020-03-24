@@ -6,9 +6,9 @@ function SelectField({t, i18n, question, register, errors}) {
   
   return (
     <div className="control">
-      <div className={`select ${errors[question.id]?'is-danger':''}`}>
+      <div className={`select ${errors[question.key]?'is-danger':''}`}>
         <select
-          name={question.id}
+          name={question.key}
           ref={register({
             required: true
           })}
@@ -18,7 +18,7 @@ function SelectField({t, i18n, question, register, errors}) {
           ))}
         </select>
       </div>
-      {errors[question.id] && (<p className="help is-danger">{t('Donnée non valide')}.</p>)}
+      {errors[question.key] && (<p className="help is-danger">{t('Donnée non valide')}.</p>)}
       
     </div>
   );
