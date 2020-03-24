@@ -1,6 +1,10 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next'
 
+import api_questions from './../api/questions'
+
+import ScreenLoadingIndicator from '../common/ScreenLoadingIndicator'
+import ScreenError from '../common/ScreenError'
 import SurveyInformationTab from './SurveyInformationTab'
 import SurveyQuestionsTab from './SurveyQuestionsTab'
 import SurveyResultsTab from './SurveyResultsTab'
@@ -18,36 +22,8 @@ class SurveyScreen extends React.Component {
       loading: true,
       loading_failed: false,
       current_step: 0,
-      questions: [
-        // TODO: fetch questions from API
-        {
-            "id": 1,
-            "type": "Number",
-            "text_fr": "Quel est votre wilaya?",
-            "text_ar": "ما هي ولايتك؟",
-            "default_value": "09",
-            "depends_on_question_value": null,
-            "depends_on_question": null
-        },
-        {
-            "id": 2,
-            "type": "Number",
-            "text_fr": "Quel est votre âge ?",
-            "text_ar": "كم عمرك ؟",
-            "default_value": "1",
-            "depends_on_question_value": null,
-            "depends_on_question": null
-        },
-        {
-            "id": 3,
-            "type": "CHAR",
-            "text_fr": "Quel est votre sexe ?",
-            "text_ar": "ما هو جنسك؟",
-            "default_value": "M",
-            "depends_on_question_value": null,
-            "depends_on_question": null
-        }
-      ]
+      questions: [],
+      answers: []
     };
   }
 
@@ -60,20 +36,47 @@ class SurveyScreen extends React.Component {
   }
 
   reset = () => {
-    this.setState({current_step: 0})
+    this.setState({
+      current_step: 0,
+      answers: []
+    })
+  }
+
+  loadQuestions() {
+    this.setState({
+      loading: true,
+      loading_failed: false
+    })
+    api_questions.get()
+      .then((response) => {
+        if (response.status === 200) {
+          this.setState({
+            questions: response.data
+          })
+        }
+        this.setState({
+          loading: false
+        })
+      })
+      .catch((error) => {
+        this.setState({
+          loading: false,
+          loading_failed: true
+        })
+      })
+  }
+
+  refresh() {
+    this.loadQuestions()
   }
 
   componentDidMount() {
-    
-  }
-  
-  componentWillUnmount() {
-    
+    this.loadQuestions()
   }
   
   render() {
     const {t} = this.props
-    const {current_step, questions} = this.state
+    const {current_step, questions, loading, loading_failed} = this.state
 
     // what tab to show?
     let current_tab
@@ -90,42 +93,61 @@ class SurveyScreen extends React.Component {
     return (
       <div className="container">
         
-        <div className="section">
-          <nav className="breadcrumb is-centered" aria-label="breadcrumbs">
-            <ul>
-              <li>
-                  <span><span className={`tag ${current_tab === INFORMATION_TAB?'is-primary':'is-light'}`}>1</span> {t('Informations')}</span>
-              </li>
-              <li>
-                  <span><span className={`tag ${current_tab === QUESTIONS_TAB?'is-primary':'is-light'}`}>2</span> {t('Questionnaire')}</span>
-              </li>
-              <li>
-                  <span><span className={`tag ${current_tab === RESULTS_TAB?'is-primary':'is-light'}`}>3</span> {t('Résultats')}</span>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        {loading && (
+          <ScreenLoadingIndicator />
+        )}
 
-        <div className="section">
-          {current_tab === INFORMATION_TAB && (
-            <SurveyInformationTab
-              stepForward={this.stepForward}
-            />
-          )}
-          {current_tab === QUESTIONS_TAB && (
-            <SurveyQuestionsTab
-              current_step={current_step}
-              questions={questions}
-              stepForward={this.stepForward}
-              stepBack={this.stepBack}
-            />
-          )}
-          {current_tab === RESULTS_TAB && (
-            <SurveyResultsTab
-              reset={this.reset}
-            />
-          )}
-        </div>
+        {!loading && loading_failed && (
+          <ScreenError
+            message={t('Une erreur est survenue.')}
+            buttonLabel={t('Rafraishir')}
+            handleButtonClick={(e) => {
+              e.preventDefault()
+              this.refresh()
+            }}
+          />
+        )}
+
+        {!loading && !loading_failed && (
+          <>
+            <div className="section">
+              <nav className="breadcrumb is-centered" aria-label="breadcrumbs">
+                <ul>
+                  <li>
+                      <span><span className={`tag ${current_tab === INFORMATION_TAB?'is-primary':'is-light'}`}>1</span> {t('Informations')}</span>
+                  </li>
+                  <li>
+                      <span><span className={`tag ${current_tab === QUESTIONS_TAB?'is-primary':'is-light'}`}>2</span> {t('Questionnaire')}</span>
+                  </li>
+                  <li>
+                      <span><span className={`tag ${current_tab === RESULTS_TAB?'is-primary':'is-light'}`}>3</span> {t('Résultats')}</span>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <div className="section">
+              {current_tab === INFORMATION_TAB && (
+                <SurveyInformationTab
+                  stepForward={this.stepForward}
+                />
+              )}
+              {current_tab === QUESTIONS_TAB && (
+                <SurveyQuestionsTab
+                  current_step={current_step}
+                  questions={questions}
+                  stepForward={this.stepForward}
+                  stepBack={this.stepBack}
+                />
+              )}
+              {current_tab === RESULTS_TAB && (
+                <SurveyResultsTab
+                  reset={this.reset}
+                />
+              )}
+            </div>
+          </>
+        )}
 
       </div>
     );

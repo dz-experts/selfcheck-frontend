@@ -3,6 +3,9 @@ import { withTranslation } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
+import CharField from './fields/CharField'
+import NumberField from './fields/NumberField'
+
 
 function SurveyInformation({t, i18n, current_step, questions, stepForward, stepBack}) {
   
@@ -29,6 +32,11 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
         <h2 className="title">
           {current_question[`text_${i18n.language}`]}
         </h2>
+
+        <div className="tile">
+          {current_question.type.toLowerCase() === 'char' && (<CharField />)}
+          {current_question.type.toLowerCase() === 'number' && (<NumberField />)}
+        </div>
 
       </div>
 
