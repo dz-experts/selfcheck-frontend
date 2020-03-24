@@ -7,8 +7,8 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 function LoadingIndicator({t}) {
   
   return (
-    <section class="section has-text-centered">
-      <span class="icon is-large">
+    <section className="section has-text-centered">
+      <span className="icon is-large">
         <FontAwesomeIcon icon={faSpinner} pulse={true} size={'3x'} />
       </span>
       <br/>

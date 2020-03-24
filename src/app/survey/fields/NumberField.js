@@ -2,11 +2,22 @@ import React from 'react';
 import { withTranslation } from 'react-i18next'
 
 
-function NumberField({t, question, answer}) {
+function NumberField({t, question, register, errors}) {
   
   return (
     <div className="control">
-      <input className="input" type="number" placeholder={t('Inserez un nombre')} />
+      <input
+        className={`input ${errors[question.id]?'is-danger':''}`}
+        name={question.id}
+        type="number"
+        step={question.format.decimal?"0.01":"1"}
+        ref={register({
+          required: true,
+          ...question.format.min!==undefined?{min: question.format.min}:{},
+          ...question.format.max!==undefined?{max: question.format.max}:{}
+        })}
+      />
+      {errors[question.id] && (<p className="help is-danger">{t('Donnée non valide')}.</p>)}      
     </div>
   );
 }

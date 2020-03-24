@@ -7,8 +7,8 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 function ScreenError({t, message, buttonLabel, handleButtonClick}) {
   
   return (
-    <section class="section has-text-centered">
-      <span class="icon is-large">
+    <section className="section has-text-centered">
+      <span className="icon is-large">
         <FontAwesomeIcon icon={faExclamationTriangle} size={'3x'} />
       </span>
       <br/>

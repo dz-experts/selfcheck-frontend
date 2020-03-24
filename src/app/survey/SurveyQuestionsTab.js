@@ -2,18 +2,28 @@ import React from 'react';
 import { withTranslation } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { useForm } from "react-hook-form";
 
-import CharField from './fields/CharField'
+import TextField from './fields/TextField'
 import NumberField from './fields/NumberField'
+import SelectField from './fields/SelectField'
+import RadioField from './fields/RadioField'
 
 
 function SurveyInformation({t, i18n, current_step, questions, stepForward, stepBack}) {
   
   const current_question = questions[current_step - 1]
 
-  return (
-    <div>
+  const { handleSubmit, register, errors } = useForm();
+  const onSubmit = values => {
+    console.log(values);
+    console.log(errors);
+    stepForward()
+  };
 
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      
       <div className="box">
         
         <button
@@ -34,18 +44,17 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
         </h2>
 
         <div className="tile">
-          {current_question.type.toLowerCase() === 'char' && (<CharField />)}
-          {current_question.type.toLowerCase() === 'number' && (<NumberField />)}
+          {current_question.format.type.toLowerCase() === 'text' && (<TextField question={current_question} register={register} errors={errors} />)}
+          {current_question.format.type.toLowerCase() === 'number' && (<NumberField question={current_question} register={register} errors={errors} />)}
+          {current_question.format.type.toLowerCase() === 'select' && (<SelectField question={current_question} register={register} errors={errors} />)}
+          {current_question.format.type.toLowerCase() === 'radio' && (<RadioField question={current_question} register={register} errors={errors} />)}
         </div>
 
       </div>
 
       <button
         className="button is-light"
-        onClick={(e) => {
-          stepForward()
-          e.preventDefault()
-        }}
+        type="submit"
       >
         <span>{t('Continuer')}</span>
         <span className="icon is-small">
@@ -53,7 +62,7 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
         </span>
       </button>
 
-    </div>
+    </form>
   );
 }
 

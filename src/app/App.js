@@ -23,7 +23,7 @@ function App({t, i18n, route}) {
             </a>
           </div>
 
-          <div class="navbar-end">
+          <div className="navbar-end">
             <a
               href="#"
               className={`navbar-item ${i18n.language === 'fr'?'is-active':''}`}
