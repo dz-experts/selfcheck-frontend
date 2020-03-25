@@ -13,8 +13,12 @@ import RadioField from './fields/RadioField'
 function SurveyInformation({t, i18n, current_step, questions, stepForward, stepBack}) {
   
   const current_question = questions[current_step - 1]
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
+  
+  const defaultValues = {}
+  defaultValues[current_question.key] = current_question.default_value
 
-  const { handleSubmit, register, errors, reset } = useForm();
+  const { handleSubmit, register, errors, reset } = useForm({defaultValues});
   const onSubmit = values => {
     setSubmitIsLoading(true)
     stepForward({answer: {key: current_question.key, value: values[current_question.key]}})
@@ -26,8 +30,6 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
         setSubmitIsLoading(false)
       })
   };
-
-  const [submitIsLoading, setSubmitIsLoading] = useState(false);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
