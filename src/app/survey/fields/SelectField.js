@@ -1,6 +1,8 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next'
 
+import { errorMessage } from './../../utils/forms'
+
 
 function SelectField({t, i18n, question, register, errors}) {
   
@@ -10,7 +12,7 @@ function SelectField({t, i18n, question, register, errors}) {
         <select
           name={question.key}
           ref={register({
-            required: true
+            required: {value: true, message: errorMessage('required', t)()}
           })}
         >
           {question.format.choices.map((choice) => (
@@ -18,7 +20,7 @@ function SelectField({t, i18n, question, register, errors}) {
           ))}
         </select>
       </div>
-      {errors[question.key] && (<p className="help is-danger">{t('Donnée non valide')}.</p>)}
+      {errors[question.key] && (<p className="help is-danger">{errors[question.key].message}.</p>)}
       
     </div>
   );
