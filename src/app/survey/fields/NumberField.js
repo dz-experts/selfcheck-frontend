@@ -14,7 +14,7 @@ function NumberField({t, i18n, question, register, errors}) {
           className={`input ${errors[question.key]?'is-danger':''}`}
           name={question.key}
           type="number"
-          step={question.format.kind==='decimal'?"0.01":"1"}
+          step={['decimal', 'float'].indexOf(question.format.kind)>-1?"0.01":"1"}
           ref={register({
             required: {value: true, message: errorMessage('required', t)()},
             ...question.format.min!==undefined?{min: {value: question.format.min, message: errorMessage('min', t)(question.format.min) }}:{},
