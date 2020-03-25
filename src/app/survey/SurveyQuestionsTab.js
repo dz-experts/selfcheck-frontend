@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useForm } from "react-hook-form";
 
+import { isRTL } from './../i18n'
+
 import TextField from './fields/TextField'
 import NumberField from './fields/NumberField'
 import SelectField from './fields/SelectField'
@@ -51,7 +53,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
           }}
         >
           <span className="icon is-small">
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowRight:faArrowLeft} />
           </span>
           <span>{t('Question')} {current_step} {t('sur')} {questions.length}</span>
         </button>
@@ -75,7 +77,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
       >
         <span>{t('Continuer')}</span>
         <span className="icon is-small">
-          <FontAwesomeIcon icon={faArrowRight} />
+        <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowLeft:faArrowRight} />
         </span>
       </button>
 

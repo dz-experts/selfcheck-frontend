@@ -1,10 +1,12 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+
+import { isRTL } from './../i18n'
 
 
-function SurveyInformationTab({t, stepForward}) {
+function SurveyInformationTab({t, i18n, stepForward}) {
   
   return (
     <div>
@@ -40,7 +42,7 @@ function SurveyInformationTab({t, stepForward}) {
       >
         <span>{t('Démarrer le test')}</span>
         <span className="icon is-small">
-          <FontAwesomeIcon icon={faArrowRight} />
+          <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowLeft:faArrowRight} />
         </span>
       </button>
 

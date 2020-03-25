@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import './app/i18n/';
 
 import 'bulma'
+import './app/rtl.css'
 
 
 ReactDOM.render(
