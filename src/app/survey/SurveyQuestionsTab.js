@@ -10,7 +10,7 @@ import SelectField from './fields/SelectField'
 import RadioField from './fields/RadioField'
 
 
-function SurveyInformation({t, i18n, current_step, questions, stepForward, stepBack}) {
+function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswer, stepForward, stepBack}) {
   
   const current_question = questions[current_step - 1]
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
@@ -19,9 +19,11 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
   defaultValues[current_question.key] = current_question.default_value
 
   const { handleSubmit, register, errors, reset } = useForm({defaultValues});
+  
   const onSubmit = values => {
     setSubmitIsLoading(true)
-    stepForward({answer: {key: current_question.key, value: values[current_question.key]}})
+    addAnswer(current_question.id, current_question.key, values[current_question.key])
+    stepForward()
       .then(() => {
         reset() // needed in order for the form to be reset for use in the next question
         setSubmitIsLoading(false)
@@ -39,6 +41,11 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
         <button
           className="button is-white"
           onClick={(e) => {
+            if (answers.length) {
+              let last_answer_values = {}
+              last_answer_values[answers[answers.length - 1].key] = answers[answers.length - 1].value
+              reset(last_answer_values)
+            }
             stepBack()
             e.preventDefault()
           }}
@@ -76,4 +83,4 @@ function SurveyInformation({t, i18n, current_step, questions, stepForward, stepB
   );
 }
 
-export default withTranslation()(SurveyInformation);
+export default withTranslation()(SurveyQuestionsTab);

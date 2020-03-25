@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 
-function SurveyInformation({t, stepForward}) {
+function SurveyInformationTab({t, stepForward}) {
   
   return (
     <div>
@@ -48,4 +48,4 @@ function SurveyInformation({t, stepForward}) {
   );
 }
 
-export default withTranslation()(SurveyInformation);
+export default withTranslation()(SurveyInformationTab);
