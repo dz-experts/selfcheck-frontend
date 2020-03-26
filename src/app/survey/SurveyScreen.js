@@ -190,19 +190,19 @@ class SurveyScreen extends React.Component {
         {!loading && !loading_failed && (
           <>
             <div className="section">
-              <nav class="level">
-                <div class="level-item has-text-centered">
+              <nav className="level">
+                <div className="level-item has-text-centered">
                 </div>
-                <div class="level-item has-text-centered">
+                <div className="level-item has-text-centered">
                   <span className={`tag ${current_tab === INFORMATION_TAB?'is-primary':'is-light'}`}>1</span> {t('Informations')}
                 </div>
-                <div class="level-item has-text-centered">
+                <div className="level-item has-text-centered">
                   <span className={`tag ${current_tab === QUESTIONS_TAB?'is-primary':'is-light'}`}>2</span> {t('Questionnaire')}
                 </div>
-                <div class="level-item has-text-centered">
+                <div className="level-item has-text-centered">
                   <span className={`tag ${current_tab === RESULTS_TAB?'is-primary':'is-light'}`}>3</span> {t('Résultats')}
                 </div>
-                <div class="level-item has-text-centered">
+                <div className="level-item has-text-centered">
                 </div>
               </nav>
               
