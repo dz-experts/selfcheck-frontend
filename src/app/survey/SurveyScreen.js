@@ -191,7 +191,7 @@ class SurveyScreen extends React.Component {
 
         {!loading && !loading_failed && (
           <>
-            <div className="section">
+            <div className="section" style={{paddingBottom: 0}}>
 
               <ul className="steps has-content-centered">
                 <li className={`steps-segment ${current_tab === INFORMATION_TAB?'is-active has-gaps':''}`}>
