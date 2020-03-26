@@ -20,7 +20,7 @@ class App extends React.Component {
     const {t, i18n, route} = this.props
     return (
       <div>
-        
+
         <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
@@ -65,7 +65,16 @@ class App extends React.Component {
         <footer className="footer">
           <div className="content has-text-centered">
             <p>
-              {t('Ce site d’information n’est pas un dispositif médical, il ne délivre pas d’avis médical.')}
+              {t('Algorithme d\'orientation mis à jour sur les recommandations de la note n 9 du 18 mars 2020.')}
+            </p>
+            <p>
+              {t('Ce site d\’information n\’est pas un dispositif médical, il ne délivre pas d\’avis médical.')}
+            </p>
+            <p>
+              <div
+                dangerouslySetInnerHTML={{__html: t('Projet solidaire d\'urgence, créé par le groupe <b>DZ-Scientists VS Corona</b>.')}}>
+              </div>
+
             </p>
           </div>
         </footer>
