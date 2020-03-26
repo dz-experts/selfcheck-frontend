@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
 import { renderRoutes } from "react-router-config"
@@ -14,6 +14,7 @@ function App({t, i18n, route}) {
     document.body.dir = isRTL(i18n.language)?'rtl':'ltr'
   });
 
+  const [isActiveBurgerMenu, setIsActiveBurgerMenu] = useState(false);
 
   return (
     <div>
@@ -25,34 +26,44 @@ function App({t, i18n, route}) {
               <strong>{t('Accueil')}</strong>
             </Link>
 
-            <a href="#" className="navbar-burger" aria-label="menu" aria-expanded="false">
+            <a
+              onClick={() => {
+                setIsActiveBurgerMenu(!isActiveBurgerMenu);
+              }}
+              href="#"
+              className={`navbar-burger burger ${isActiveBurgerMenu ? "is-active" : ""}`}
+              aria-label="menu"
+              aria-expanded="false"
+            >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
           </div>
 
-          <div className="navbar-end">
-            <a
-              href="#"
-              className={`navbar-item ${i18n.language === 'fr'?'is-active':''}`}
-              onClick={(e) => {
-                i18n.changeLanguage('fr');
-                e.preventDefault();
-              }}
-            >
-              Français
-            </a>
-            <a
-              href="#"
-              className={`navbar-item ${i18n.language === 'ar'?'is-active':''}`}
-              onClick={(e) => {
-                i18n.changeLanguage('ar');
-                e.preventDefault();
-              }}
-            >
-              العربية
-            </a>
+          <div className={`navbar-menu ${isActiveBurgerMenu ? "is-active" : ""}`}>
+            <div className="navbar-end">
+              <a
+                href="#"
+                className={`navbar-item ${i18n.language === 'fr'?'is-active':''}`}
+                onClick={(e) => {
+                  i18n.changeLanguage('fr');
+                  e.preventDefault();
+                }}
+              >
+                Français
+              </a>
+              <a
+                href="#"
+                className={`navbar-item ${i18n.language === 'ar'?'is-active':''}`}
+                onClick={(e) => {
+                  i18n.changeLanguage('ar');
+                  e.preventDefault();
+                }}
+              >
+                العربية
+              </a>
+            </div>
           </div>
         </div>
       </nav>
