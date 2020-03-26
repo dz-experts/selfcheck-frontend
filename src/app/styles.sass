@@ -13,6 +13,7 @@ $family-sans-serif: "Cairo", "Open Sans", BlinkMacSystemFont, -apple-system, "Se
 
 // extensions
 @import "~bulma-steps-component/bulma-steps.sass";
+@import "~bulma-checkradio/dist/css/bulma-checkradio.sass";
 
 // customizations
 @media (min-width: 1023px) 
@@ -23,3 +24,9 @@ $family-sans-serif: "Cairo", "Open Sans", BlinkMacSystemFont, -apple-system, "Se
 @media (max-width: 768px)
     .steps:not(.is-horizontal).has-content-centered .steps-content 
         padding-top: 0
+
+// Fix for bulma-checkradio when using google fonts (bad vertical alignment of radio and label)
+.is-checkradio[type="radio"] + label, .is-checkradio[type="checkbox"] + label
+    display: inline-block
+    padding-top: 0
+    height: 1.5rem
