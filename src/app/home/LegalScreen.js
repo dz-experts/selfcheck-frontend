@@ -7,7 +7,7 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { isRTL } from './../i18n'
 
 
-function HomeScreen({t, i18n}) {
+function LegalScreen({t, i18n}) {
 
   return (
     <div>
@@ -38,4 +38,4 @@ function HomeScreen({t, i18n}) {
   );
 }
 
-export default withTranslation()(HomeScreen);
+export default withTranslation()(LegalScreen);
