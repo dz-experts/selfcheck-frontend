@@ -1,0 +1,23 @@
+body[dir="rtl"] .navbar-end {
+    margin-left: initial;
+    margin-right: auto;
+}
+
+body[dir="rtl"] .button .icon:last-child:not(:first-child) {
+    margin-right: 0.25em;
+    margin-left: calc(-0.5em - 1px);
+}
+
+body[dir="rtl"] .button .icon:first-child:not(:last-child) {
+    margin-right: calc(-0.5em - 1px);
+    margin-left: 0.25em;
+}
+
+body[dir="rtl"] .control {
+    text-align: right;
+}
+
+body[dir="rtl"] .radio + .radio {
+    margin-right: 0.5em;
+    margin-left: 0;
+}
