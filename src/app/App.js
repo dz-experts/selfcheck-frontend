@@ -95,7 +95,7 @@ function App({t, i18n, route}) {
                       </ul>
                   </aside>
               </div>
-              <div className="column is-three-quarters">
+              <div className="column is-half">
                   <p>
                       {t('Algorithme d\'orientation mis à jour sur les recommandations de la note n 9 du 18 mars 2020.')}
                   </p>
