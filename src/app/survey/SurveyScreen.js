@@ -192,21 +192,27 @@ class SurveyScreen extends React.Component {
         {!loading && !loading_failed && (
           <>
             <div className="section">
-              <nav className="level">
-                <div className="level-item has-text-centered">
-                </div>
-                <div className="level-item has-text-centered">
-                  <span className={`tag ${current_tab === INFORMATION_TAB?'is-primary':'is-light'}`}>1</span> {t('Informations')}
-                </div>
-                <div className="level-item has-text-centered">
-                  <span className={`tag ${current_tab === QUESTIONS_TAB?'is-primary':'is-light'}`}>2</span> {t('Questionnaire')}
-                </div>
-                <div className="level-item has-text-centered">
-                  <span className={`tag ${current_tab === RESULTS_TAB?'is-primary':'is-light'}`}>3</span> {t('Résultats')}
-                </div>
-                <div className="level-item has-text-centered">
-                </div>
-              </nav>
+
+              <ul className="steps has-content-centered">
+                <li className={`steps-segment ${current_tab === INFORMATION_TAB?'is-active has-gaps':''}`}>
+                  <span className="steps-marker">1</span>
+                  <div className="steps-content">
+                    <p className="is-size-5">{t('Informations')}</p>
+                  </div>
+                </li>
+                <li className={`steps-segment ${current_tab === QUESTIONS_TAB?'is-active has-gaps':''}`}>
+                  <span className="steps-marker">2</span>
+                  <div className="steps-content">
+                    <p className="is-size-5">{t('Questionnaire')}</p>
+                  </div>
+                </li>
+                <li className={`steps-segment ${current_tab === RESULTS_TAB?'is-active has-gaps':''}`}>
+                  <span className="steps-marker">3</span>
+                  <div className="steps-content">
+                    <p className="is-size-5">{t('Résultats')}</p>
+                  </div>
+                </li>
+              </ul>
               
             </div>
 

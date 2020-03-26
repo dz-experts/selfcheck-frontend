@@ -7,7 +7,7 @@ import routes from './app/routes';
 import * as serviceWorker from './serviceWorker';
 import './app/i18n/';
 
-import 'bulma'
+import './app/styles.sass'
 import './app/rtl.css'
 
 
