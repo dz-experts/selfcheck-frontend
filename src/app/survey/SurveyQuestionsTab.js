@@ -49,6 +49,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
       <div className="box">
         
         <button
+          type="button"
           className="button is-white"
           onClick={(e) => {
             if (answers.length) {
@@ -70,12 +71,14 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
           {current_question[`text_${i18n.language}`]}
         </h2>
 
-        <div className="tile">
-          {current_question.format.type.toLowerCase() === 'text' && (<TextField question={current_question} register={register} errors={errors} />)}
-          {current_question.format.type.toLowerCase() === 'number' && (<NumberField question={current_question} register={register} errors={errors} />)}
-          {current_question.format.type.toLowerCase() === 'select' && (<SelectField question={current_question} register={register} errors={errors} />)}
-          {current_question.format.type.toLowerCase() === 'radio' && (<RadioField question={current_question} register={register} errors={errors} />)}
-        </div>
+        <article className="message">
+          <div className="message-body" style={{borderWidth: 0}}>
+            {current_question.format.type.toLowerCase() === 'text' && (<TextField question={current_question} register={register} errors={errors} />)}
+            {current_question.format.type.toLowerCase() === 'number' && (<NumberField question={current_question} register={register} errors={errors} />)}
+            {current_question.format.type.toLowerCase() === 'select' && (<SelectField question={current_question} register={register} errors={errors} />)}
+            {current_question.format.type.toLowerCase() === 'radio' && (<RadioField question={current_question} register={register} errors={errors} />)}
+          </div>
+        </article>
 
       </div>
 
