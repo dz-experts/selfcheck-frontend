@@ -1,7 +1,11 @@
 @import "~bulma/bulma.sass";
 @import "~bulma-steps-component/bulma-steps.sass";
 
+@media (min-width: 1023px) 
+    .section
+        padding-left: 0
+        padding-right: 0
 
-.section
-  padding-left: 0
-  padding-right: 0
+@media (max-width: 768px)
+    .steps:not(.is-horizontal).has-content-centered .steps-content 
+        padding-top: 0
