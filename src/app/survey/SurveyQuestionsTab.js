@@ -22,7 +22,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
   
   const onSubmit = values => {
     setSubmitIsLoading(true)
-    addAnswer(current_question.id, current_question.key, values[current_question.key])
+    addAnswer(current_question.id, current_question.key, values[current_question.key], current_question.format)
     stepForward()
       .then(() => {
         reset() // needed in order for the form to be reset for use in the next question

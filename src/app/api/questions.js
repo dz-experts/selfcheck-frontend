@@ -4,8 +4,8 @@ const api_questions = {
   get: () => (
     api_base().get('/questions/')
   ),
-  post: ({answers}) => (
-    api_base().post('/questions/', {data: answers})
+  post: (body) => (
+    api_base().post('/questions/', body)
   )
 }
 
