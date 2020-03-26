@@ -9,7 +9,7 @@ function RadioField({t, i18n, question, register, errors}) {
   return (
     <div className="control">
       {question.format.choices.map((choice) => (
-        <label className="radio" key={choice.value}>
+        <label className="radio" key={choice.value} style={{display: 'block', margin: '0'}}>
           <input
             type="radio"
             name={question.key}
@@ -19,7 +19,6 @@ function RadioField({t, i18n, question, register, errors}) {
             })}
           />
           {choice[`label_${i18n.language}`]}
-          <br/>
         </label>
       ))}
       {errors[question.key] && (<p className="help is-danger">{errors[question.key].message}.</p>)}
