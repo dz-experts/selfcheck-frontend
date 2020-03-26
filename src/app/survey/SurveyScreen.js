@@ -155,7 +155,7 @@ class SurveyScreen extends React.Component {
   
   render() {
     const {t} = this.props
-    const {current_step, questions, answers, loading, loading_failed} = this.state
+    const {current_step, questions, answers, results, loading, loading_failed} = this.state
 
     // what tab to show?
     let current_tab
@@ -228,6 +228,7 @@ class SurveyScreen extends React.Component {
               {current_tab === RESULTS_TAB && (
                 <SurveyResultsTab
                   reset={this.reset}
+                  results={results}
                 />
               )}
             </div>
