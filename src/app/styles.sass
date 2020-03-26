@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Cairo|Open+Sans&display=swap');
+
+
+// Bulma variables
+$family-sans-serif: "Cairo", "Open Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+
+// Bulma
+@import "~bulma/bulma.sass";
+
+// extensions
+@import "~bulma-steps-component/bulma-steps.sass";
+@import "~bulma-checkradio/dist/css/bulma-checkradio.sass";
+
+// customizations
+@media (min-width: 1023px) 
+    .section
+        padding-left: 0
+        padding-right: 0
+
+@media (max-width: 768px)
+    .steps:not(.is-horizontal).has-content-centered .steps-content 
+        padding-top: 0
+
+// Fix for bulma-checkradio when using google fonts (bad vertical alignment of radio and label)
+.is-checkradio[type="radio"] + label, .is-checkradio[type="checkbox"] + label
+    display: inline-block
+    padding-top: 0
+    height: 1.5rem

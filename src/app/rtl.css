@@ -3,6 +3,11 @@ body[dir="rtl"] .navbar-end {
     margin-right: auto;
 }
 
+body[dir="rtl"] .navbar-burger {
+    margin-left: initial;
+    margin-right: auto;
+}
+
 body[dir="rtl"] .button .icon:last-child:not(:first-child) {
     margin-right: 0.25em;
     margin-left: calc(-0.5em - 1px);
@@ -37,4 +42,28 @@ body[dir="rtl"] .field.has-addons .control:last-child:not(:only-child) .button{
 
 body[dir="rtl"] .field.has-addons .control:first-child:not(:only-child) .input{
     border-radius: 0 4px 4px 0 !important;
+}
+
+
+body[dir="rtl"] .steps:not(.is-vertical):not(.is-thin).has-content-centered.has-gaps .steps-segment:not(:last-child)::after, body[dir="rtl"] .steps:not(.is-vertical):not(.is-thin).has-content-centered .steps-segment.has-gaps:not(:last-child)::after {
+    right: calc(50% + 1.3rem);
+    left: calc(-50% + 1.3rem);
+}
+
+body[dir="rtl"] .steps:not(.is-vertical).has-content-centered .steps-segment:not(:last-child)::after {
+    right: 50%;
+    left: -50%;
+}
+
+@media (max-width: 768px) {
+    body[dir="rtl"] .steps:not(.is-horizontal) .steps-content {
+        margin-right: calc(1rem + .5em);
+        padding-right: 1em;
+        margin-left: initial;
+        padding-left: initial;
+    }
+    body[dir="rtl"] .steps:not(.is-horizontal) .steps-segment:not(:last-child):after {
+        right: calc(1rem - (0.2em)) !important;
+        left: initial !important;
+    }
 }

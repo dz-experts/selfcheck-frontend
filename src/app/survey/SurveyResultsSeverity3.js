@@ -12,7 +12,7 @@ function SurveyResultsSeverity3({t}) {
       <div className="message-body content">        
         <h4>{t('Appelez le')} <a href="tel:3030">30 30</a></h4>
         <p>
-          {t('Fournir plus d\'inforamtions ici..')}
+          {t('Fournir plus d\'informations ici..')}
         </p>
 
         <strong>{t('Restez chez vous.')}</strong>
