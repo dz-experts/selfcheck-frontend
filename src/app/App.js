@@ -62,11 +62,15 @@ function App({t, i18n, route}) {
         <footer className="footer">
             <div className="columns">
                 <div className="column">
-
+                    <aside className="menu">
                     <p className="menu-label">
                         {t('Contacts utiles')}
                     </p>
-
+                        <ul className="menu-list">
+                            <li><a href="tel:3030">{t('Appelez le')}  30 30</a></li>
+                            <li><a href='http://www.sante.gov.dz/coronavirus/coronavirus-2019.html'>sante.gov.dz/coronavirus/</a></li>
+                        </ul>
+                    </aside>
                 </div>
                     <div className="column">
                     <aside className="menu">
