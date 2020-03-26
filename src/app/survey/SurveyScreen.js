@@ -82,7 +82,7 @@ class SurveyScreen extends React.Component {
     
     if (next_step > questions.length) {
         const body = {}
-        answers.map(answer=>(
+        answers.forEach(answer=>(
             body[answer.key] = answer.value
         ))
       // if we have indeed reached the end of the survey, attempt submit, but only step forward on success.
