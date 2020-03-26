@@ -190,19 +190,22 @@ class SurveyScreen extends React.Component {
         {!loading && !loading_failed && (
           <>
             <div className="section">
-              <nav className="breadcrumb is-centered" aria-label="breadcrumbs">
-                <ul>
-                  <li>
-                      <span><span className={`tag ${current_tab === INFORMATION_TAB?'is-primary':'is-light'}`}>1</span> {t('Informations')}</span>
-                  </li>
-                  <li>
-                      <span><span className={`tag ${current_tab === QUESTIONS_TAB?'is-primary':'is-light'}`}>2</span> {t('Questionnaire')}</span>
-                  </li>
-                  <li>
-                      <span><span className={`tag ${current_tab === RESULTS_TAB?'is-primary':'is-light'}`}>3</span> {t('Résultats')}</span>
-                  </li>
-                </ul>
+              <nav class="level">
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                  <span className={`tag ${current_tab === INFORMATION_TAB?'is-primary':'is-light'}`}>1</span> {t('Informations')}
+                </div>
+                <div class="level-item has-text-centered">
+                  <span className={`tag ${current_tab === QUESTIONS_TAB?'is-primary':'is-light'}`}>2</span> {t('Questionnaire')}
+                </div>
+                <div class="level-item has-text-centered">
+                  <span className={`tag ${current_tab === RESULTS_TAB?'is-primary':'is-light'}`}>3</span> {t('Résultats')}
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
               </nav>
+              
             </div>
 
             <div className="section">
