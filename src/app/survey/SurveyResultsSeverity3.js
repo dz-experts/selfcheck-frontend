@@ -7,7 +7,7 @@ function SurveyResultsSeverity3({t}) {
   return (
     <article className="message is-warning">
       <div className="message-header">
-        <p>{t('Vos symptômes nécessitent une prise en charge rapide. ')}</p>
+        <p>{t('Vos symptômes nécessitent une prise en charge rapide.')}</p>
       </div>
       <div className="message-body content">        
         <h4>{t('Appelez le')} <a href="tel:3030">30 30</a></h4>

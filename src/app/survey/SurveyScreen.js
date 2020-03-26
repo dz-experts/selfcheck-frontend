@@ -80,8 +80,10 @@ class SurveyScreen extends React.Component {
     }
     
     if (next_step > questions.length) {
+        const body = {}
+        answers.forEach(answer=>(body[answer.key] = answer.value))
       // if we have indeed reached the end of the survey, attempt submit, but only step forward on success.
-      return api_questions.post({answers: answers})
+      return api_questions.post(body)
         .then((response) => {
           if (response.status === 201) {
             this.setState({

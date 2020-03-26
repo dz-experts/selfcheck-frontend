@@ -17,7 +17,24 @@ body[dir="rtl"] .control {
     text-align: right;
 }
 
+body input[type=radio] {
+    margin: 0 0.2em 0.2em 0;
+}
+
+body[dir="rtl"] input[type=radio] {
+    margin: 0  0 0.2em 0.2em;
+}
+
 body[dir="rtl"] .radio + .radio {
-    margin-right: 0.5em;
+    margin-right: 1.5em;
     margin-left: 0;
+    font-size: 18px;
+}
+
+body[dir="rtl"] .field.has-addons .control:last-child:not(:only-child) .button{
+    border-radius: 4px 0 0 4px !important;
+}
+
+body[dir="rtl"] .field.has-addons .control:first-child:not(:only-child) .input{
+    border-radius: 0 4px 4px 0 !important;
 }
