@@ -1,6 +1,7 @@
 import App from './App'
 import HomeScreen from './home/HomeScreen'
 import SurveyScreen from './survey/SurveyScreen'
+import LegalScreen from './home/LegalScreen'
 
 
 const routes = [
@@ -16,7 +17,12 @@ const routes = [
                 path: '/survey',
                 exact: true,
                 component: SurveyScreen
-            }            
+            },
+            {
+                path: '/legal-notice',
+                exact: true,
+                component: LegalScreen
+            }
         ]
     }
 ]
