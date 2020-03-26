@@ -90,8 +90,8 @@ function App({t, i18n, route}) {
                           {t('Navigation')}
                       </p>
                       <ul className="menu-list">
-                          <li><a href='/'>{t('Accueil')}</a></li>
-                          <li><a href='/legal-notice'> {t('Mentions légales')}</a></li>
+                          <li><Link to='/'>{t('Accueil')}</Link></li>
+                          <li><Link to='/legal-notice'> {t('Mentions légales')}</Link></li>
                       </ul>
                   </aside>
               </div>
