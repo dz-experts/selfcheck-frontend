@@ -3,9 +3,9 @@ export const errorMessage = function(key, t = x => x) {
         case 'required':
             return () => t('Ce champ est réquis')
         case 'min':
-            return (min) => `${t('Valeur minimale:')} ${min}`
+            return (min) => `${t('Valeur minimale :')} ${min}`
         case 'max':
-            return (max) => `${t('Valeur maximale:')} ${max}`
+            return (max) => `${t('Valeur maximale :')} ${max}`
         case 'minLength':
             return (minLength) => `${t('La valeur doit comprendre au moins')} ${minLength} ${t('caractères')}`
         case 'maxLength':
