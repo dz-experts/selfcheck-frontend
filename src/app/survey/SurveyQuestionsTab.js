@@ -26,7 +26,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
     setSubmitIsLoading(true)
 
     // store answer
-      addAnswer(current_question.id, current_question.key, values[current_question.key], current_question.format)
+      addAnswer(current_question.id, current_question.key, values[current_question.key])
 
     // reset form (needed in order for the form to be empty for use in the next question)
     let empty_values = {}

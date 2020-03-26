@@ -28,18 +28,17 @@ class SurveyScreen extends React.Component {
     };
   }
 
-  addAnswer = (question_id, key, value, format) => {
+  addAnswer = (question_id, key, value) => {
     this.setState(state => {
       let prevAnswersList = [...state.answers]
       const already_existing_answer = prevAnswersList.filter((answer) => answer.key === key)?.[0]
-      const parsedValue = format.kind === 'char'? value: JSON.parse(value)
       if (already_existing_answer) {
         return {
-          answers: prevAnswersList.map((answer) => answer.key !== key?answer:{question_id, key, value: parsedValue})
+          answers: prevAnswersList.map((answer) => answer.key !== key?answer:{question_id, key, value})
         }
       }
       return {
-        answers: [...state.answers, ...[{question_id, key, value: parsedValue}]]
+        answers: [...state.answers, ...[{question_id, key, value}]]
       }
     })
   }
@@ -82,9 +81,7 @@ class SurveyScreen extends React.Component {
     
     if (next_step > questions.length) {
         const body = {}
-        answers.forEach(answer=>(
-            body[answer.key] = answer.value
-        ))
+        answers.forEach(answer=>(body[answer.key] = answer.value))
       // if we have indeed reached the end of the survey, attempt submit, but only step forward on success.
       return api_questions.post(body)
         .then((response) => {
