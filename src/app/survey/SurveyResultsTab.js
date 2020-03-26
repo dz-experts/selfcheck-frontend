@@ -15,8 +15,8 @@ function SurveyResultsTab({t, results, reset}) {
         
         <h2 className="title">{t('Résultats')}</h2>
         
-        <article class="message">
-          <div class="message-body">
+        <article className="message">
+          <div className="message-body">
             {t('La recommandation affichée peut évoluer suivant les informations en provenance des autorités de santé et des chercheurs. Elle ne constitue pas un avis médical. En cas de doute, demandez conseil à votre médecin ou pharmacien.')}
           </div>
         </article>

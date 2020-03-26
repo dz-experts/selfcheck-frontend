@@ -9,8 +9,8 @@ function NumberField({t, i18n, question, register, errors}) {
 
   return (
     <div>
-      <div class="field has-addons">
-        <p class="control">
+      <div className="field has-addons">
+        <p className="control">
           <input
             className={`input ${errors[question.key]?'is-danger':''}`}
             name={question.key}
@@ -24,8 +24,8 @@ function NumberField({t, i18n, question, register, errors}) {
           />
         </p>
         {question.format[`suffix_${i18n.language}`] !== null && (
-          <p class="control">
-            <a class="button is-static">
+          <p className="control">
+            <a className="button is-static">
               {question.format[`suffix_${i18n.language}`]}
             </a>
           </p>
