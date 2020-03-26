@@ -49,6 +49,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
       <div className="box">
         
         <button
+          type="button"
           className="button is-white"
           onClick={(e) => {
             if (answers.length) {
