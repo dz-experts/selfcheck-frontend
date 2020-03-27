@@ -5,12 +5,12 @@ import api_questions from './../api/questions'
 
 import ScreenLoadingIndicator from '../common/ScreenLoadingIndicator'
 import ScreenError from '../common/ScreenError'
-import SurveyInformationTab from './SurveyInformationTab'
+import SurveyPreambuleTab from './SurveyPreambuleTab'
 import SurveyQuestionsTab from './SurveyQuestionsTab'
 import SurveyResultsTab from './SurveyResultsTab'
 
 
-const INFORMATION_TAB = 'INFORMATION_TAB'
+const PREAMBULE_TAB = 'PREAMBULE_TAB'
 const QUESTIONS_TAB = 'QUESTIONS_TAB'
 const RESULTS_TAB = 'RESULTS_TAB'
 
@@ -162,7 +162,7 @@ class SurveyScreen extends React.Component {
     // what tab to show?
     let current_tab
     if (current_step === 0) {
-      current_tab = INFORMATION_TAB
+      current_tab = PREAMBULE_TAB
     } else if (current_step > 0 && current_step <= questions.length) {
       current_tab = QUESTIONS_TAB
     } else if (current_step === questions.length + 1) {
@@ -194,10 +194,10 @@ class SurveyScreen extends React.Component {
             <div className="section" style={{paddingBottom: 0}}>
 
               <ul className="steps has-content-centered">
-                <li className={`steps-segment ${current_tab === INFORMATION_TAB?'is-active has-gaps':''}`}>
+                <li className={`steps-segment ${current_tab === PREAMBULE_TAB?'is-active has-gaps':''}`}>
                   <span className="steps-marker">1</span>
                   <div className="steps-content">
-                    <p className="is-size-5">{t('Informations')}</p>
+                    <p className="is-size-5">{t('Préambule')}</p>
                   </div>
                 </li>
                 <li className={`steps-segment ${current_tab === QUESTIONS_TAB?'is-active has-gaps':''}`}>
@@ -217,8 +217,8 @@ class SurveyScreen extends React.Component {
             </div>
 
             <div className="section">
-              {current_tab === INFORMATION_TAB && (
-                <SurveyInformationTab
+              {current_tab === PREAMBULE_TAB && (
+                <SurveyPreambuleTab
                   stepForward={this.stepForward}
                 />
               )}

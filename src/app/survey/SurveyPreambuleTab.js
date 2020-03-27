@@ -6,7 +6,7 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { isRTL } from './../i18n'
 
 
-function SurveyInformationTab({t, i18n, stepForward}) {
+function SurveyPreambuleTab({t, i18n, stepForward}) {
   
   return (
     <div>
@@ -39,4 +39,4 @@ function SurveyInformationTab({t, i18n, stepForward}) {
   );
 }
 
-export default withTranslation()(SurveyInformationTab);
+export default withTranslation()(SurveyPreambuleTab);
