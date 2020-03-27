@@ -46,26 +46,28 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       
+      <button
+        type="button"
+        className="button is-light is-small"
+        onClick={(e) => {
+          if (answers.length) {
+            let last_answer_values = {}
+            last_answer_values[answers[answers.length - 1].key] = answers[answers.length - 1].value
+            reset(last_answer_values)
+          }
+          stepBack()
+          e.preventDefault()
+        }}
+        style={{marginBottom: '1rem'}}
+      >
+        <span className="icon is-small">
+          <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowRight:faArrowLeft} />
+        </span>
+        <span>{t('Retour')}</span>
+      </button>
       <div className="box">
         
-        <button
-          type="button"
-          className="button is-white"
-          onClick={(e) => {
-            if (answers.length) {
-              let last_answer_values = {}
-              last_answer_values[answers[answers.length - 1].key] = answers[answers.length - 1].value
-              reset(last_answer_values)
-            }
-            stepBack()
-            e.preventDefault()
-          }}
-        >
-          <span className="icon is-small">
-            <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowRight:faArrowLeft} />
-          </span>
-          <span>{t('Question')} {current_step} {t('sur')} {questions.length}</span>
-        </button>
+        <span>{t('Question')} <strong>{current_step}</strong> {t('sur')} {questions.length}</span>
         
         <h2 className="title">
           {current_question[`text_${i18n.language}`]}
@@ -86,7 +88,7 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
         className={`button is-light ${submitIsLoading?'is-loading':''}`}
         type="submit"
       >
-        <span>{t('Continuer')}</span>
+        <strong>{t('Continuer')}</strong>
         <span className="icon is-small">
         <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowLeft:faArrowRight} />
         </span>
