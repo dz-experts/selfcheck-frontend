@@ -20,18 +20,19 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
   const defaultValues = {}
   defaultValues[current_question.key] = current_question.default_value
 
-  const { handleSubmit, register, errors, reset } = useForm({defaultValues});
+  const { handleSubmit, register, unregister, errors, reset } = useForm({defaultValues});
   
   const onSubmit = values => {
     setSubmitIsLoading(true)
 
     // store answer
-      addAnswer(current_question.id, current_question.key, values[current_question.key])
+    addAnswer(current_question.id, current_question.key, values[current_question.key])
 
-    // reset form (needed in order for the form to be empty for use in the next question)
+    // reset current form fields (needed in order for the form to be empty for use in the next question)
     let empty_values = {}
     empty_values[current_question.key] = "" // this exact line is important, so Radio fields can be reset too
     reset(empty_values)
+    unregister(current_question.key)
 
     // step forward
     stepForward()

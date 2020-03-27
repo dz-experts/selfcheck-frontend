@@ -21,7 +21,7 @@ function RadioField({t, i18n, question, register, errors}) {
               required: {value: true, message: errorMessage('required', t)()}
             })}
           />
-          <label for={`radio_${question.key}_${index}`}>{choice[`label_${i18n.language}`]}</label>
+          <label htmlFor={`radio_${question.key}_${index}`}>{choice[`label_${i18n.language}`]}</label>
         </div>
       ))}
       {errors[question.key] && (<p className="help is-danger">{errors[question.key].message}.</p>)}
