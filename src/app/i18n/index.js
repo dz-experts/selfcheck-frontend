@@ -1,5 +1,8 @@
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import Cookies from 'js-cookie'
+
+import constants from './../../constants'
 
 // %Add any new languages here%
 import ar from './ar/resource';
@@ -9,7 +12,7 @@ import en from './en/resource';
 i18next
 .use(initReactI18next) // passes i18n down to react-i18next
 .init({
-  lng: 'fr',
+  lng: Cookies.get(constants.COOKIE_LANG_KEY)?Cookies.get(constants.COOKIE_LANG_KEY):constants.DEFAULT_LANG,
 
   // allow keys to be phrases having `:`, `.`
   nsSeparator: false,

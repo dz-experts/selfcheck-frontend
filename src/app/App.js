@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
 import { renderRoutes } from "react-router-config"
+import Cookies from 'js-cookie'
 
 import { isRTL } from './i18n'
+import constants from './../constants'
 
 
 function App({t, i18n, route}) {
@@ -48,6 +50,7 @@ function App({t, i18n, route}) {
                 className={`navbar-item ${i18n.language === 'fr'?'is-active':''}`}
                 onClick={(e) => {
                   i18n.changeLanguage('fr');
+                  Cookies.set(constants.COOKIE_LANG_KEY, 'fr')
                   e.preventDefault();
                 }}
               >
@@ -58,6 +61,7 @@ function App({t, i18n, route}) {
                 className={`navbar-item ${i18n.language === 'ar'?'is-active':''}`}
                 onClick={(e) => {
                   i18n.changeLanguage('ar');
+                  Cookies.set(constants.COOKIE_LANG_KEY, 'ar')
                   e.preventDefault();
                 }}
               >
