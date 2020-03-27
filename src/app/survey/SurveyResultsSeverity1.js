@@ -3,7 +3,7 @@ import { withTranslation } from 'react-i18next'
 
 
 function SurveyResultsSeverity1({t}) {
-  
+
   return (
     <article className="message is-info">
       <div className="message-header">
@@ -11,10 +11,8 @@ function SurveyResultsSeverity1({t}) {
       </div>
       <div className="message-body content">
 
-        <strong>{t('Programmez une visite avec votre médecin traitant habituel.')}</strong>
-        <p>
-          {t('Ne vous déplacez pas au cabinet, appelez pour demander conseil avant votre venue !')}
-        </p>
+        <strong>{t('Programmez une visite avec votre médecin traitant habituel ou la structure hospitalière la plus proche.')}</strong>
+
 
         <strong>{t('Surveillez attentivement votre état de santé.')}</strong>
         <ul>
