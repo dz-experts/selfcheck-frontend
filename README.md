@@ -14,15 +14,15 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.
 You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
+Launches the test runner in the interactive watch mode.
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run i18n-scan`
@@ -45,10 +45,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
+Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
+The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -57,7 +57,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Deploys the app into **Github Pages** by running a build, then pushing to the `origin/gh-pages` branch.
 
-**Note: ensure the Github Pages section of your project's settings is configured to serve files from the `gh-pages` branch. Also ensure `"homepage"' attribute in your `package.json` file and the host in `public/CNAME` are set correctly.**
+**Note:** ensure the Github Pages section of your project's settings is configured to serve files from the `gh-pages` branch. Also ensure the `"homepage"` attribute in your `package.json` file and the host in `public/CNAME` are set correctly.
 
 For other deployment options, see https://facebook.github.io/create-react-app/docs/deployment
 
