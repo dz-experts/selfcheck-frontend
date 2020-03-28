@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "i18n-scan": "node node_modules/i18next-scanner/bin/cli.js --config ./src/app/i18n/i18next-scanner.config.js --output ./src/app './src/app/**/*.{js,jsx}' './src/index.js'"
+    "i18n-scan": "node node_modules/i18next-scanner/bin/cli.js --config ./src/app/i18n/i18next-scanner.config.js --output ./ './src/app/**/*.{js,jsx}' './src/index.js'"
   },
   "eslintConfig": {
     "extends": "react-app"

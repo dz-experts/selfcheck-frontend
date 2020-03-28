@@ -19,9 +19,9 @@ module.exports = {
         defaultValue: null,
         resource: {
             // the source path is relative to current working directory
-            loadPath: 'app/i18n/{{lng}}/{{ns}}.json',
+            loadPath: 'src/app/i18n/{{lng}}/{{ns}}.json',
             // the destination path is relative to the --output config path
-            savePath: 'i18n/{{lng}}/{{ns}}.json'
+            savePath: 'src/app/i18n/{{lng}}/{{ns}}.json'
         },
         nsSeparator: false, // namespace separator
         keySeparator: false, // key separator
