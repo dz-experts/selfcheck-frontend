@@ -1,6 +1,12 @@
+# Self-check (app frontend)
+
+This is the frontend for [self-check.covid19dz.com](https://self-check.covid19dz.com), an app providing an online test for helping people understand their symptoms and the options available for conduct in case of suspicion of exposition to the COVID-19 Coronavirus.
+
+**Note: A compatible API URL must be provided in `src/app/constants.js`.**
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Development Scripts
 
 In the project directory, you can run:
 
@@ -17,15 +23,11 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `npm run i18n-scan`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Scans the code for new strings to include in the translation files at `src/app/i18n/{lang}/resource.json`.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Don't worry, this won't override any already-translated entries.
 
 ### `npm run eject`
 
@@ -37,32 +39,26 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Production Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `npm run build`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Code Splitting
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Analyzing the Bundle Size
+### `npm run deploy`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Deploys the app into **Github Pages** by running a build, then pushing to the `origin/gh-pages` branch.
 
-### Making a Progressive Web App
+**Note: ensure the Github Pages section of your project's settings is configured to serve files from the `gh-pages` branch. Also ensure `"homepage"' attribute in your `package.json` file and the host in `public/CNAME` are set correctly.**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+For other deployment options, see https://facebook.github.io/create-react-app/docs/deployment
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Your contributions are always welcome.
