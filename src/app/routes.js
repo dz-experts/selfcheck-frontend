@@ -1,6 +1,7 @@
 import App from './App'
 import HomeScreen from './home/HomeScreen'
 import SurveyScreen from './survey/SurveyScreen'
+import AboutScreen from './home/AboutScreen'
 import LegalScreen from './home/LegalScreen'
 
 
@@ -17,6 +18,11 @@ const routes = [
                 path: '/survey',
                 exact: true,
                 component: SurveyScreen
+            },
+            {
+                path: '/about',
+                exact: true,
+                component: AboutScreen
             },
             {
                 path: '/legal-notice',
