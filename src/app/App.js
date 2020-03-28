@@ -5,6 +5,8 @@ import { Link, withRouter } from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
 import { renderRoutes } from "react-router-config"
 import Cookies from 'js-cookie'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 import { isRTL } from './i18n'
 import constants from './../constants'
@@ -25,7 +27,7 @@ function App({t, i18n, route, history}) {
     }
   });
 
-  const [isActiveBurgerMenu, setIsActiveBurgerMenu] = useState(false);
+  const [isActiveLanguageMenu, setIsActiveLanguageMenu] = useState(false);
 
   return (
     <div>
@@ -36,46 +38,61 @@ function App({t, i18n, route, history}) {
             <Link to="/" className="navbar-item">
               <strong>{t('Accueil')}</strong>
             </Link>
-
-            <a
-              onClick={() => {
-                setIsActiveBurgerMenu(!isActiveBurgerMenu);
-              }}
-              href="#"
-              className={`navbar-burger burger ${isActiveBurgerMenu ? "is-active" : ""}`}
-              aria-label="menu"
-              aria-expanded="false"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
           </div>
 
-          <div className={`navbar-menu ${isActiveBurgerMenu ? "is-active" : ""}`}>
+          <div className="navbar-menu">
             <div className="navbar-end">
-              <a
-                href="#"
-                className={`navbar-item ${i18n.language === 'fr'?'is-active':''}`}
-                onClick={(e) => {
-                  i18n.changeLanguage('fr');
-                  Cookies.set(constants.COOKIE_LANG_KEY, 'fr')
-                  e.preventDefault();
-                }}
-              >
-                Français
-              </a>
-              <a
-                href="#"
-                className={`navbar-item ${i18n.language === 'ar'?'is-active':''}`}
-                onClick={(e) => {
-                  i18n.changeLanguage('ar');
-                  Cookies.set(constants.COOKIE_LANG_KEY, 'ar')
-                  e.preventDefault();
-                }}
-              >
-                العربية
-              </a>
+              <div className={`navbar-item has-dropdown ${isActiveLanguageMenu ? "is-active" : ""}`}>
+                <div
+                  className="navbar-link is-arrowless"
+                  onBlur={(e) => {
+                    setIsActiveLanguageMenu(false)
+                  }}
+                  onFocus={(e) => {
+                    setIsActiveLanguageMenu(!isActiveLanguageMenu)
+                  }}
+                  tabIndex="0"
+                >
+                  {((language) => {
+                    switch (language) {
+                      case 'fr':
+                        return 'Français'
+                      case 'ar':
+                          return 'العربية'
+                      default:
+                        return 'Language'
+                    }
+                  })(i18n.language)}
+                  <span className="icon is-small" style={{margin: isRTL(i18n.language)?'0 .5rem 0 0':'0 0 0 .5rem'}}>
+                    <FontAwesomeIcon icon={faAngleDown} />
+                  </span>
+                </div>
+
+                <div className="navbar-dropdown">
+                  <a
+                    href="#"
+                    className={`navbar-item ${i18n.language === 'fr'?'is-active':''}`}
+                    onMouseDown={(e) => {
+                      i18n.changeLanguage('fr');
+                      Cookies.set(constants.COOKIE_LANG_KEY, 'fr')
+                      setIsActiveLanguageMenu(false)
+                    }}
+                  >
+                    Français
+                  </a>
+                  <a
+                    href="#"
+                    className={`navbar-item ${i18n.language === 'ar'?'is-active':''}`}
+                    onMouseDown={(e) => {
+                      i18n.changeLanguage('ar');
+                      Cookies.set(constants.COOKIE_LANG_KEY, 'ar')
+                      setIsActiveLanguageMenu(false)
+                    }}
+                  >
+                    العربية
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@
 
 // Bulma variables
 $family-sans-serif: "Cairo", "Open Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$navbar-breakpoint: 0;
 
 
 // Bulma
@@ -16,10 +17,17 @@ $family-sans-serif: "Cairo", "Open Sans", BlinkMacSystemFont, -apple-system, "Se
 @import "~bulma-checkradio/dist/css/bulma-checkradio.sass";
 
 // customizations
-@media (min-width: 1023px) 
+@media (min-width: 1024px)
     .section
         padding-left: 0
         padding-right: 0
+
+@media (max-width: 1024px)
+    .navbar > .container .navbar-brand, .container > .navbar .navbar-brand
+        margin-left: 0
+    
+    .navbar > .container .navbar-menu, .container > .navbar .navbar-menu
+        margin-right: 0
 
 @media (max-width: 768px)
     .steps:not(.is-horizontal).has-content-centered .steps-content 
