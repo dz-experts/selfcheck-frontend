@@ -122,7 +122,6 @@ function App({t, i18n, route, history}) {
                       <ul className="menu-list">
                           <li><Link to='/'>{t('Accueil')}</Link></li>
                           <li><Link to='/about'> {t('À propos')}</Link></li>
-                          <li><Link to='/legal-notice'> {t('Mentions légales')}</Link></li>
                       </ul>
                   </aside>
               </div>
