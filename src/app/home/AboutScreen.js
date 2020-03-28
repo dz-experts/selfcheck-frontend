@@ -13,7 +13,7 @@ function AboutScreen({t}) {
               {t('À propos')}
             </h1>
             <p>
-              {t('Les DZ STEMers est un groupe né de manière organique, initié par une poignée d’amis, au début de la crise liée au COVID-19 en Algérie. Nous sommes aujourd’hui une centaine d’algériens complètement indépendants et répartis partout sur la planète avec des expertises en Sciences, Ingénierie et Informatiques. Nous sommes tous unis pour une seule vocation : aider notre pays à traverser cette crise sans précédent.')}
+              {t('DZ Scientists VS Corona est un groupe né de manière organique, initié par une poignée d’amis, au début de la crise liée au COVID-19 en Algérie. Nous sommes aujourd’hui une centaine d’algériens complètement indépendants et répartis partout sur la planète avec des expertises en Sciences, Ingénierie et Informatiques. Nous sommes tous unis pour une seule vocation : aider notre pays à traverser cette crise sans précédent.')}
             </p>
 
             <p>
