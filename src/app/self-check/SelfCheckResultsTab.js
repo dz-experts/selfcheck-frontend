@@ -1,12 +1,12 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next'
 
-import SurveyResultsSeverity0 from './SurveyResultsSeverity0'
-import SurveyResultsSeverity1 from './SurveyResultsSeverity1'
-import SurveyResultsSeverity3 from './SurveyResultsSeverity3'
+import SelfCheckResultsSeverity0 from './SelfCheckResultsSeverity0'
+import SelfCheckResultsSeverity1 from './SelfCheckResultsSeverity1'
+import SelfCheckResultsSeverity3 from './SelfCheckResultsSeverity3'
 
 
-function SurveyResultsTab({t, results, reset}) {
+function SelfCheckResultsTab({t, results, reset}) {
   
   return (
     <div>
@@ -21,9 +21,9 @@ function SurveyResultsTab({t, results, reset}) {
           </div>
         </article>
 
-        {results?.severity === 0 && (<SurveyResultsSeverity0 />)}
-        {results?.severity === 1 && (<SurveyResultsSeverity1 />)}
-        {results?.severity === 3 && (<SurveyResultsSeverity3 />)}
+        {results?.severity === 0 && (<SelfCheckResultsSeverity0 />)}
+        {results?.severity === 1 && (<SelfCheckResultsSeverity1 />)}
+        {results?.severity === 3 && (<SelfCheckResultsSeverity3 />)}
       </div>
 
       <button
@@ -40,4 +40,4 @@ function SurveyResultsTab({t, results, reset}) {
   );
 }
 
-export default withTranslation()(SurveyResultsTab);
+export default withTranslation()(SelfCheckResultsTab);

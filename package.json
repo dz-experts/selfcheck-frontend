@@ -1,5 +1,5 @@
 {
-  "name": "survey-frontend",
+  "name": "self-check-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

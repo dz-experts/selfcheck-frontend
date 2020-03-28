@@ -12,7 +12,7 @@ import SelectField from './fields/SelectField'
 import RadioField from './fields/RadioField'
 
 
-function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswer, stepForward, stepBack}) {
+function SelfCheckQuestionsTab({t, i18n, current_step, questions, answers, addAnswer, stepForward, stepBack}) {
   
   const current_question = questions[current_step - 1]
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
@@ -99,4 +99,4 @@ function SurveyQuestionsTab({t, i18n, current_step, questions, answers, addAnswe
   );
 }
 
-export default withTranslation()(SurveyQuestionsTab);
+export default withTranslation()(SelfCheckQuestionsTab);

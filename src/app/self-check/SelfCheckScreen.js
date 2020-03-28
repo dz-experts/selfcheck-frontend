@@ -5,9 +5,9 @@ import api_questions from './../api/questions'
 
 import ScreenLoadingIndicator from '../common/ScreenLoadingIndicator'
 import ScreenError from '../common/ScreenError'
-import SurveyPreambuleTab from './SurveyPreambuleTab'
-import SurveyQuestionsTab from './SurveyQuestionsTab'
-import SurveyResultsTab from './SurveyResultsTab'
+import SelfCheckPreambuleTab from './SelfCheckPreambuleTab'
+import SelfCheckQuestionsTab from './SelfCheckQuestionsTab'
+import SelfCheckResultsTab from './SelfCheckResultsTab'
 
 
 const PREAMBULE_TAB = 'PREAMBULE_TAB'
@@ -15,7 +15,7 @@ const QUESTIONS_TAB = 'QUESTIONS_TAB'
 const RESULTS_TAB = 'RESULTS_TAB'
 
 
-class SurveyScreen extends React.Component {
+class SelfCheckScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,7 +74,7 @@ class SurveyScreen extends React.Component {
     }
     
     if (next_step <= questions.length) {
-      // if we did not reach the end of the survey, yet, simply step forward.
+      // if we did not reach the end of the self-check, yet, simply step forward.
       this.setState({current_step: next_step})
       return Promise.resolve()
     }
@@ -82,7 +82,7 @@ class SurveyScreen extends React.Component {
     if (next_step > questions.length) {
         const body = {}
         answers.forEach(answer=>(body[answer.key] = answer.value))
-      // if we have indeed reached the end of the survey, attempt submit, but only step forward on success.
+      // if we have indeed reached the end of the self-check, attempt submit, but only step forward on success.
       return api_questions.post(body)
         .then((response) => {
           if (response.status === 201) {
@@ -218,12 +218,12 @@ class SurveyScreen extends React.Component {
 
             <div className="section">
               {current_tab === PREAMBULE_TAB && (
-                <SurveyPreambuleTab
+                <SelfCheckPreambuleTab
                   stepForward={this.stepForward}
                 />
               )}
               {current_tab === QUESTIONS_TAB && (
-                <SurveyQuestionsTab
+                <SelfCheckQuestionsTab
                   current_step={current_step}
                   questions={questions}
                   answers={answers}
@@ -234,7 +234,7 @@ class SurveyScreen extends React.Component {
                 />
               )}
               {current_tab === RESULTS_TAB && (
-                <SurveyResultsTab
+                <SelfCheckResultsTab
                   reset={this.reset}
                   results={results}
                 />
@@ -248,4 +248,4 @@ class SurveyScreen extends React.Component {
   }
 }
 
-export default withTranslation()(SurveyScreen);
+export default withTranslation()(SelfCheckScreen);

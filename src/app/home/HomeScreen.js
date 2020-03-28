@@ -21,7 +21,7 @@ function HomeScreen({t, i18n}) {
             <h2 className="subtitle">
               {t('Faites le test pour répondre en citoyen éclairé selon vos symptômes.')}
             </h2>
-            <Link to="/survey" className="button is-primary">
+            <Link to="/self-check" className="button is-primary">
               <span>{t('Démarrer le test')}</span>
               <span className="icon is-small">
                 <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowLeft:faArrowRight} />

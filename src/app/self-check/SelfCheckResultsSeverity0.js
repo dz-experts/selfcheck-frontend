@@ -2,7 +2,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next'
 
 
-function SurveyResultsSeverity0({t}) {
+function SelfCheckResultsSeverity0({t}) {
   
   return (
     <article className="message is-info">
@@ -19,4 +19,4 @@ function SurveyResultsSeverity0({t}) {
   );
 }
 
-export default withTranslation()(SurveyResultsSeverity0);
+export default withTranslation()(SelfCheckResultsSeverity0);
