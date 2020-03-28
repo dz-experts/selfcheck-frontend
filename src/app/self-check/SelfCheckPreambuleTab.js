@@ -26,6 +26,7 @@ function SelfCheckPreambuleTab({t, i18n, stepForward}) {
         className="button is-primary"
         onClick={(e) => {
           stepForward({})
+          window.scrollTo(0, 0);
           e.preventDefault()
         }}
       >
