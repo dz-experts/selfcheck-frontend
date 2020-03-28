@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { compose } from 'redux'
+import { Link, withRouter } from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
 import { renderRoutes } from "react-router-config"
 import Cookies from 'js-cookie'
@@ -9,11 +10,19 @@ import { isRTL } from './i18n'
 import constants from './../constants'
 
 
-function App({t, i18n, route}) {
+function App({t, i18n, route, history}) {
 
   useEffect(() => {
     // ensure page text direction follows language changes
     document.body.dir = isRTL(i18n.language)?'rtl':'ltr'
+
+    const unlisten = history.listen(() => {
+      window.scrollTo(0, 0);
+    });
+    
+    return () => {
+      unlisten();
+    }
   });
 
   const [isActiveBurgerMenu, setIsActiveBurgerMenu] = useState(false);
@@ -117,4 +126,8 @@ function App({t, i18n, route}) {
 
 }
 
-export default withTranslation()(App);
+export default compose(
+  withRouter,
+  withTranslation(),
+)(App)
+
