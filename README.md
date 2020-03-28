@@ -2,6 +2,8 @@
 
 This is the frontend for [self-check.covid19dz.com](https://self-check.covid19dz.com), an app providing an online test for helping people understand their symptoms and the options available for conduct in case of suspicion of exposition to the COVID-19 Coronavirus.
 
+**Note: This project is for informational purposes only and is not intended to replace formal medical consultation with a doctor or at a health establishment.**
+
 **Note: A compatible API URL must be provided in `src/app/constants.js`.**
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
