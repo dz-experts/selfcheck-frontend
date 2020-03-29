@@ -34,11 +34,11 @@ class SelfCheckScreen extends React.Component {
       const already_existing_answer = prevAnswersList.filter((answer) => answer.key === key)?.[0]
       if (already_existing_answer) {
         return {
-          answers: prevAnswersList.map((answer) => answer.key !== key?answer:{question_id, key, value})
+          answers: prevAnswersList.map((answer) => answer.key !== key ? answer : { question_id, key, value })
         }
       }
       return {
-        answers: [...state.answers, ...[{question_id, key, value}]]
+        answers: [...state.answers, ...[{ question_id, key, value }]]
       }
     })
   }
@@ -50,9 +50,9 @@ class SelfCheckScreen extends React.Component {
       }
     })
   }
-  
+
   stepForward = () => {
-    const {current_step, questions, answers} = this.state
+    const { current_step, questions, answers } = this.state
 
     // determine next step
     let next_step = current_step + 1
@@ -72,16 +72,16 @@ class SelfCheckScreen extends React.Component {
         }
       }
     }
-    
+
     if (next_step <= questions.length) {
       // if we did not reach the end of the self-check, yet, simply step forward.
-      this.setState({current_step: next_step})
+      this.setState({ current_step: next_step })
       return Promise.resolve()
     }
-    
+
     if (next_step > questions.length) {
-        const body = {}
-        answers.forEach(answer=>(body[answer.key] = answer.value))
+      const body = {}
+      answers.forEach(answer => (body[answer.key] = answer.value))
       // if we have indeed reached the end of the self-check, attempt submit, but only step forward on success.
       return api_questions.post(body)
         .then((response) => {
@@ -100,9 +100,9 @@ class SelfCheckScreen extends React.Component {
 
   stepBack = () => {
     // step back to last saved answer/question
-    const {current_step, questions, answers} = this.state
+    const { current_step, questions, answers } = this.state
     let previous_step = current_step - 1
-      
+
     if (answers.length) {
       const last_answer = answers[answers.length - 1]
       const last_question_index = questions.indexOf(questions.filter(question => question.key === last_answer.key)[0])
@@ -154,10 +154,10 @@ class SelfCheckScreen extends React.Component {
   componentDidMount() {
     this.loadQuestions()
   }
-  
+
   render() {
-    const {t} = this.props
-    const {current_step, questions, answers, results, loading, loading_failed} = this.state
+    const { t } = this.props
+    const { current_step, questions, answers, results, loading, loading_failed } = this.state
 
     // what tab to show?
     let current_tab
@@ -173,7 +173,7 @@ class SelfCheckScreen extends React.Component {
 
     return (
       <div className="container">
-        
+
         {loading && (
           <ScreenLoadingIndicator />
         )}
@@ -191,29 +191,29 @@ class SelfCheckScreen extends React.Component {
 
         {!loading && !loading_failed && (
           <>
-            <div className="section" style={{paddingBottom: 0}}>
+            <div className="section" style={{ paddingBottom: 0 }}>
 
               <ul className="steps has-content-centered">
-                <li className={`steps-segment ${current_tab === PREAMBULE_TAB?'is-active has-gaps':''}`}>
+                <li className={`steps-segment ${current_tab === PREAMBULE_TAB ? 'is-active has-gaps' : ''}`}>
                   <span className="steps-marker">1</span>
                   <div className="steps-content">
                     <p className="is-size-5">{t('Préambule')}</p>
                   </div>
                 </li>
-                <li className={`steps-segment ${current_tab === QUESTIONS_TAB?'is-active has-gaps':''}`}>
+                <li className={`steps-segment ${current_tab === QUESTIONS_TAB ? 'is-active has-gaps' : ''}`}>
                   <span className="steps-marker">2</span>
                   <div className="steps-content">
                     <p className="is-size-5">{t('Questionnaire')}</p>
                   </div>
                 </li>
-                <li className={`steps-segment ${current_tab === RESULTS_TAB?'is-active has-gaps':''}`}>
+                <li className={`steps-segment ${current_tab === RESULTS_TAB ? 'is-active has-gaps' : ''}`}>
                   <span className="steps-marker">3</span>
                   <div className="steps-content">
                     <p className="is-size-5">{t('Résultats')}</p>
                   </div>
                 </li>
               </ul>
-              
+
             </div>
 
             <div className="section">

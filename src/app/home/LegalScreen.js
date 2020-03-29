@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next'
 
-function LegalScreen({t}) {
+function LegalScreen({ t }) {
 
   return (
     <div>

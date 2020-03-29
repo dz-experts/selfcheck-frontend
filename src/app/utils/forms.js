@@ -1,4 +1,4 @@
-export const errorMessage = function(key, t = x => x) {
+export const errorMessage = function (key, t = x => x) {
     switch (key) {
         case 'required':
             return () => t('Ce champ est réquis')

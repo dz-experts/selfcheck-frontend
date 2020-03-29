@@ -2,7 +2,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next'
 
 
-function SelfCheckResultsSeverity1({t}) {
+function SelfCheckResultsSeverity1({ t }) {
 
   return (
     <article className="message is-info">

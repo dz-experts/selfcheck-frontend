@@ -7,8 +7,8 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { isRTL } from './../i18n'
 
 
-function HomeScreen({t, i18n}) {
-  
+function HomeScreen({ t, i18n }) {
+
   return (
     <div>
 
@@ -24,7 +24,7 @@ function HomeScreen({t, i18n}) {
             <Link to="/self-check" className="button is-primary">
               <span>{t('Démarrer le test')}</span>
               <span className="icon is-small">
-                <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowLeft:faArrowRight} />
+                <FontAwesomeIcon icon={isRTL(i18n.language) ? faArrowLeft : faArrowRight} />
               </span>
             </Link>
           </div>

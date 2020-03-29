@@ -12,16 +12,16 @@ import SelectField from './fields/SelectField'
 import RadioField from './fields/RadioField'
 
 
-function SelfCheckQuestionsTab({t, i18n, current_step, questions, answers, addAnswer, stepForward, stepBack}) {
-  
+function SelfCheckQuestionsTab({ t, i18n, current_step, questions, answers, addAnswer, stepForward, stepBack }) {
+
   const current_question = questions[current_step - 1]
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
-  
+
   const defaultValues = {}
   defaultValues[current_question.key] = current_question.default_value
 
-  const { handleSubmit, register, unregister, errors, reset } = useForm({defaultValues});
-  
+  const { handleSubmit, register, unregister, errors, reset } = useForm({ defaultValues });
+
   const onSubmit = values => {
     setSubmitIsLoading(true)
 
@@ -46,7 +46,7 @@ function SelfCheckQuestionsTab({t, i18n, current_step, questions, answers, addAn
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      
+
       <button
         type="button"
         className="button is-light is-small"
@@ -59,23 +59,23 @@ function SelfCheckQuestionsTab({t, i18n, current_step, questions, answers, addAn
           stepBack()
           e.preventDefault()
         }}
-        style={{marginBottom: '1rem'}}
+        style={{ marginBottom: '1rem' }}
       >
         <span className="icon is-small">
-          <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowRight:faArrowLeft} />
+          <FontAwesomeIcon icon={isRTL(i18n.language) ? faArrowRight : faArrowLeft} />
         </span>
         <span>{t('Retour')}</span>
       </button>
       <div className="box">
-        
+
         <span>{t('Question')} <strong>{current_step}</strong> {t('sur')} {questions.length}</span>
-        
+
         <h2 className="title">
           {current_question[`text_${i18n.language}`]}
         </h2>
 
         <article className="message">
-          <div className="message-body" style={{borderWidth: 0}}>
+          <div className="message-body" style={{ borderWidth: 0 }}>
             {current_question.format.type.toLowerCase() === 'text' && (<TextField question={current_question} register={register} errors={errors} />)}
             {current_question.format.type.toLowerCase() === 'number' && (<NumberField question={current_question} register={register} errors={errors} />)}
             {current_question.format.type.toLowerCase() === 'select' && (<SelectField question={current_question} register={register} errors={errors} />)}
@@ -86,12 +86,12 @@ function SelfCheckQuestionsTab({t, i18n, current_step, questions, answers, addAn
       </div>
 
       <button
-        className={`button is-light ${submitIsLoading?'is-loading':''}`}
+        className={`button is-light ${submitIsLoading ? 'is-loading' : ''}`}
         type="submit"
       >
         <strong>{t('Continuer')}</strong>
         <span className="icon is-small">
-        <FontAwesomeIcon icon={isRTL(i18n.language)?faArrowLeft:faArrowRight} />
+          <FontAwesomeIcon icon={isRTL(i18n.language) ? faArrowLeft : faArrowRight} />
         </span>
       </button>
 

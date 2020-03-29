@@ -2,8 +2,8 @@ import React from 'react';
 import { withTranslation } from 'react-i18next'
 
 
-function SelfCheckResultsSeverity0({t}) {
-  
+function SelfCheckResultsSeverity0({ t }) {
+
   return (
     <article className="message is-info">
       <div className="message-header">

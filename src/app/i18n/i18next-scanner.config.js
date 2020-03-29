@@ -13,7 +13,7 @@ module.exports = {
         },
         lngs: ['ar', 'en'], // %Add any new languages here%
         ns: [
-          'resource'
+            'resource'
         ],
         defaultNs: 'resource',
         defaultValue: null,

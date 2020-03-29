@@ -4,18 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 
 
-function ScreenError({t, message, buttonLabel, handleButtonClick}) {
-  
+function ScreenError({ t, message, buttonLabel, handleButtonClick }) {
+
   return (
-    <section className="section has-text-centered" style={{paddingBottom: '10rem', paddingTop: '10rem'}}>
+    <section className="section has-text-centered" style={{ paddingBottom: '10rem', paddingTop: '10rem' }}>
       <span className="icon is-large">
         <FontAwesomeIcon icon={faExclamationTriangle} size={'3x'} />
       </span>
-      <br/>
-      <br/>
+      <br />
+      <br />
       {message}
-      <br/>
-      <br/>
+      <br />
+      <br />
       <button
         className="button is-warning"
         onClick={handleButtonClick}
