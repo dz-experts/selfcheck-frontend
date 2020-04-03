@@ -2,10 +2,10 @@ import api_base from './_base'
 
 const api_questions = {
   get: () => (
-    api_base().get('/questions/')
+    api_base().get('/public/questions/')
   ),
   post: (answers) => (
-    api_base().post('/questions/', answers)
+    api_base().post('/patients/symptoms/', answers)
   )
 }
 
