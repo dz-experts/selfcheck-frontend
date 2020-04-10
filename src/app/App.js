@@ -127,7 +127,7 @@ function App({ t, i18n, route, history }) {
               <p>
                 {t('Ce site d’information n’est pas un dispositif médical et ne délivre pas d’avis médical.')}
               </p>
-              <p dangerouslySetInnerHTML={{ __html: t('Projet solidaire d\'urgence, créé par le groupe <b>DZ Scientists VS Corona</b>.') }}></p>
+              <p dangerouslySetInnerHTML={{ __html: t('Projet solidaire d\'urgence, créé par le groupe <b>WE Algerians</b>.') }}></p>
             </div>
           </div>
         </div>
