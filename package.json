@@ -51,7 +51,7 @@
   "devDependencies": {
     "gh-pages": "2.2.0",
     "i18next-scanner": "2.11.0",
-    "node-sass": "4.13.1"
+    "node-sass": "7.0.0"
   },
   "homepage": "https://self-check.covid19dz.com"
 }
